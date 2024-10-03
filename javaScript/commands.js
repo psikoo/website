@@ -19,9 +19,9 @@ export function processCommand(command) {
 
 
 
-let helpString = "this is the help string"; //TODO
+let helpString = "Commands: help, echo, banner"; //TODO
 
-let bannerString = `<pre class='customFont'>
+let bannerString = `<pre class="customFont">
                                                                             
 ██████╗ ███████╗██╗██╗  ██╗ ██████╗  ██████╗ ██╗    ██╗███████╗██████╗      
 ██╔══██╗██╔════╝██║██║ ██╔╝██╔═══██╗██╔═══██╗██║    ██║██╔════╝██╔══██╗     
@@ -29,4 +29,5 @@ let bannerString = `<pre class='customFont'>
 ██╔═══╝ ╚════██║██║██╔═██╗ ██║   ██║██║   ██║██║███╗██║██╔══╝  ██╔══██╗     
 ██║     ███████║██║██║  ██╗╚██████╔╝╚██████╔╝╚███╔███╔╝███████╗██████╔╝     
 ╚═╝     ╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝  ╚══╝╚══╝ ╚══════╝╚═════╝  v1.0
+For a list of available commands, type "help".                              
                                                                             </pre>`;
