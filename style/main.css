@@ -16,7 +16,7 @@
     font-style: normal;
 }
 
-body {
+html {
     margin: 0px;
     overflow: hidden;
     color: var(--primaryColor);
