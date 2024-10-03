@@ -1,0 +1,47 @@
+:root {
+    --bgColor: #010307;
+    --fgColor: #0A0E12;
+    --border: #ffffff;
+    --primaryColor: #ffffff;
+    --secondaryColor: #ffffff;
+    --accentColor: #0D4FAF;
+
+    --height: 90vh;
+}
+
+body {
+    margin: 0px;
+    overflow: hidden;
+    color: var(--primaryColor);
+    background: var(--bgColor);
+}
+
+p {
+    margin: 0px;
+    display: block;
+}
+
+.mainWindow{
+    height: var(--height);
+    aspect-ratio: 16 / 9;
+    margin-top: calc((100vh - var(--height))/2);
+    margin-right: auto;
+    margin-left: auto;
+    
+    border: 2px solid var(--border);
+    border-radius: 10px;
+
+    background: var(--fgColor);
+}
+
+.commandLine{
+    position:sticky;
+    height: calc(100% - 40px);
+    margin: 20px;
+    /*border: 1px solid red;*/
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width:thin;
+    scrollbar-color: var(--fgColor) var(--fgColor);
+}
