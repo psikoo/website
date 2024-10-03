@@ -16,7 +16,7 @@
     font-style: normal;
 }
 
-html {
+body {
     margin: 0px;
     overflow: hidden;
     color: var(--primaryColor);
@@ -35,7 +35,7 @@ pre {
 
 .mainWindow{
     height: var(--height);
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 9; /* does not work for other resolutions fix*/
     margin-top: calc((100vh - var(--height))/2);
     margin-right: auto;
     margin-left: auto;
