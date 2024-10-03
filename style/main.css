@@ -3,11 +3,12 @@
     --fgColor: #0A0E12;
     --border: #ffffff;
     --primaryColor: #ffffff;
-    --secondaryColor: #ffffff;
+    --secondaryColor: #000000;
     --accentColor: #0D4FAF;
 
     --height: 90vh;
 }
+/* TODO  add colors to text */
 
 .customFont {
     font-family: "Source Code Pro", monospace;
@@ -23,14 +24,27 @@ body {
     background: var(--bgColor);
 }
 
-p {
+pre {
     margin: 0px;
     display: block;
 }
 
-pre {
-    margin: 0px;
-    display: block;
+a:link {/* unvisited link */
+    color: var(--primaryColor);
+} a:visited { /* visited link */
+    color: var(--primaryColor);
+} a:hover { /* mouse over link */
+    color: var(--accentColor);
+} a:active { /* selected link */
+    color: var(--accentColor);
+} 
+
+::selection {
+    color: var(--secondaryColor);
+    background: var(--primaryColor);
+} ::-moz-selection { /* Code for Firefox */
+    color: var(--secondaryColor);
+    background: var(--primaryColor);
 }
 
 .mainWindow{
@@ -47,8 +61,6 @@ pre {
 }
 
 .commandLine{
-    position:sticky;
-    height: calc(100% - 40px);
     margin: 20px;
     /* border: 1px solid red; */
 
@@ -56,4 +68,33 @@ pre {
     overflow-y: auto;
     scrollbar-width:thin;
     scrollbar-color: var(--fgColor) var(--fgColor);
+
+    max-height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.blink {
+    width: max-content;
+}
+.blink::after {
+  content: "_";
+  background-color: var(--primaryColor);
+  vertical-align: top;
+  width: 10px;
+  height: 20px;
+  -webkit-animation: blink 1s step-end infinite;
+  animation: blink 1s step-end infinite;
+}
+
+@-webkit-keyframes blink {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+  
+@keyframes blink {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
 }

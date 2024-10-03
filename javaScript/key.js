@@ -28,22 +28,22 @@ document.addEventListener("keydown", (e) => { //Home PageUp EndPage DownInsert P
         e.preventDefault();
     } else if(e.key=="/") { // Stop firefox from quick searching
         e.preventDefault();
-        document.getElementById("text").innerHTML += e.key;
+        document.getElementById("terminal").innerHTML += e.key;
     } else if(e.key=="'") { // Stop firefox from quick searching
         e.preventDefault();
-        document.getElementById("text").innerHTML += e.key;
+        document.getElementById("terminal").innerHTML += e.key;
     } else if(e.key=="Enter") { // Process command
-        let command = document.getElementById("text").innerHTML.substring(18);
+        let command = document.getElementById("terminal").innerHTML.substring(20);
         processCommand(command);
-        document.getElementById("text").innerHTML = "psikoo@website:~$ "
+        document.getElementById("terminal").innerHTML = "psikoo@github.io:~$ "
     }else if(e.key=="Backspace") { // Delete last character
-        let text = document.getElementById("text").innerHTML;
-        if(text.length > 18) {
-            document.getElementById("text").innerHTML = text.substring(0, text.length - 1);
+        let text = document.getElementById("terminal").innerHTML;
+        if(text.length > 20) {
+            document.getElementById("terminal").innerHTML = text.substring(0, text.length - 1);
         } else {
             //TODO add error sound
         }
     } else { // Print out character
-        document.getElementById("text").innerHTML += e.key;
+        document.getElementById("terminal").innerHTML += e.key;
     }
 });
