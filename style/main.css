@@ -9,6 +9,13 @@
     --height: 90vh;
 }
 
+.customFont {
+    font-family: "Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
     margin: 0px;
     overflow: hidden;
@@ -17,6 +24,11 @@ body {
 }
 
 p {
+    margin: 0px;
+    display: block;
+}
+
+pre {
     margin: 0px;
     display: block;
 }
@@ -38,7 +50,7 @@ p {
     position:sticky;
     height: calc(100% - 40px);
     margin: 20px;
-    /*border: 1px solid red;*/
+    /* border: 1px solid red; */
 
     overflow-x: hidden;
     overflow-y: auto;
