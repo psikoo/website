@@ -1,4 +1,4 @@
-export function processCommand(command) {
+export async function processCommand(command) {
     command = command.split(" ");
     //Utils
     if(command[0] == "help") {
@@ -29,6 +29,15 @@ export function processCommand(command) {
         addToOld(command[0], repoString);}
     else if(command[0] == "socials") {
         addToOld(command[0], socialsString);}
+    //Github
+    else if(command[0] == "projects") {
+        let projectsString = "";
+        let data = JSON.parse(await getURL("https://api.github.com/users/psikoo/repos"));
+        for(let i = 0; i < data.length; i++) {
+            console.log(data[i].full_name);
+            projectsString += "<a href=\"https://github.com/"+data[i].full_name+"\" target=\"_blank\">&gt"+data[i].full_name+"</a><br>";
+        }
+        addToOld(command[0], projectsString);}
     //Unknown
     else {
         addToOld(command[0], commandNotFoundString);}
@@ -44,6 +53,20 @@ function addToOld(command , content) {
 
 function clearOld() {
     document.getElementById("old").innerHTML = "";
+}
+
+async function getURL(url) {
+    let headersList = {
+        "Accept": "*/*",
+    }
+       
+    let response = await fetch(url, { 
+         method: "GET",
+        headers: headersList
+    });
+       
+    let data = await response.text();
+    return data;
 }
 
 
@@ -62,11 +85,13 @@ let helpString = `<pre class="customFont">
     > banner
     > echo
     > cat
+> Github
+    > repo
+    > projects
 > Info commands
     > hostname
     > whoami
     > date
-    > repo
     > socials
 </pre>`;
 
