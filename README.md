@@ -12,17 +12,17 @@ The website works like any other terminal. The command "help" prints out a list 
 **List of commands:**
 
 > Utility commands
-    > help          | Prints out this message
-    > clear         | Clears the screen
-    > banner        | Prints the terminal banner
-    > echo          | Prints the arguments following the command
-    > cat           | Meow :3
+    help          | Prints out this message
+    clear          | Clears the screen
+    banner        | Prints the terminal banner
+    echo          | Prints the arguments following the command
+    cat           | Meow :3
 > Github
-    > repo          | Link to the websites repository
-    > about         | Prints short about message
-    > projects      | Link to all of my public repositories
-    > aboutMe       | Link to my github profile
+    repo          | Link to the websites repository
+    about         | Prints short about message
+    projects      | Link to all of my public repositories
+    aboutMe       | Link to my github profile
 > Info commands     
-    > hostname      | Prints the hostname
-    > whoami        | Prints the username
-    > date          | Prints the current date and time
+    hostname      | Prints the hostname
+    whoami        | Prints the username
+    date          | Prints the current date and time
