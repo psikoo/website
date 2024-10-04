@@ -25,11 +25,11 @@ export async function processCommand(command) {
     else if(command[0] == "date") {
         const date = new Date();
         addToOld(command[0], date);} 
+    //Github
     else if(command[0] == "repo") {
         addToOld(command[0], repoString);}
-    else if(command[0] == "socials") {
-        addToOld(command[0], socialsString);}
-    //Github
+    else if(command[0] == "about") {
+        addToOld(command[0], aboutString);}
     else if(command[0] == "projects") {
         let projectsString = "";
         let data = JSON.parse(await getURL("https://api.github.com/users/psikoo/repos"));
@@ -38,6 +38,8 @@ export async function processCommand(command) {
             projectsString += "<a href=\"https://github.com/"+data[i].full_name+"\" target=\"_blank\">&gt"+data[i].full_name+"</a><br>";
         }
         addToOld(command[0], projectsString);}
+    else if(command[0] == "aboutMe") {
+        addToOld(command[0], aboutMeString);}
     //Unknown
     else {
         addToOld(command[0], commandNotFoundString);}
@@ -69,13 +71,11 @@ async function getURL(url) {
     return data;
 }
 
-
-
-
 let hostString = "github.io";
 let whoamiString = "psikoo";
-let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">github.com/psikoo/website</a>"
-let socialsString = "<a href=\"https://github.com/psikoo\" target=\"_blank\">github.com/psikoo</a>"
+let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">&gtgithub.com/psikoo/website</a>"
+let aboutString = "This project was made with pure HTML, CSS and JS. To see how it was made use the command \"repo\". To see other projects of mine use the command \"projects\"."
+let aboutMeString = "<a href=\"https://github.com/psikoo\" target=\"_blank\">&gtgithub.com/psikoo</a>"
 
 let commandNotFoundString = "The given command doesn't exist, to see list of available commands, type \"help\".";
 let helpString = `<pre class="customFont">
@@ -87,12 +87,13 @@ let helpString = `<pre class="customFont">
     > cat
 > Github
     > repo
+    > about
     > projects
+    > aboutMe
 > Info commands
     > hostname
     > whoami
     > date
-    > socials
 </pre>`;
 
 let catString = `<pre class="customFont">
