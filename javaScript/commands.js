@@ -38,6 +38,8 @@ export async function processCommand(command) {
             projectsString += "<a href=\"https://github.com/"+data[i].full_name+"\" target=\"_blank\">&gt"+data[i].full_name+"</a><br>";
         }
         addToOld(command[0], projectsString);}
+    else if(command[0] == "pages") {
+        addToOld(command[0], pagesString);}
     else if(command[0] == "aboutMe") {
         addToOld(command[0], aboutMeString);}
     //Other
@@ -81,7 +83,14 @@ let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\
 let aboutString = "This project was made with pure HTML, CSS and JS. To see how it was made use the command \"repo\". To see other projects of mine use the command \"projects\"."
 let aboutMeString = "<a href=\"https://github.com/psikoo\" target=\"_blank\">&gtgithub.com/psikoo</a>"
 
-let commandNotFoundString = "The given command doesn't exist, to see list of available commands, type \"help\".";
+let pagesString= `<pre class="customFont">
+> github.io
+    > <a href=\"https://psikoo.github.io/website/\" target=\"_blank\">/website</a>
+    > <a href=\"https://psikoo.github.io/LeagueClientStats/\" target=\"_blank\">/LeagueClientStats</a>
+> self-hosted
+    > <a href=\"https://quenecesitas.net\" target=\"_blank\">quenecesitas.net</a>
+</pre>`;
+
 let helpString = `<pre class="customFont">
 > Utility commands
     > help
@@ -93,6 +102,7 @@ let helpString = `<pre class="customFont">
     > repo
     > about
     > projects
+    > pages
     > aboutMe
 > Info commands
     > hostname
@@ -115,7 +125,8 @@ let catString = `<pre class="customFont">
 ⠈⠿⡿⠃⠀⠀⠀ ⠀⣿⣿⣿⣧⠀⠀⠀⠀⠀⠉⠻⣿⡿⠂
  ⠀⠀⠀⠀⠀⠀⠀  ⠈⢿⡿⠟⠃⠀⠀⠀⠀⠀⠀⠈⠀⠀
 
- </pre>`
+</pre>`;
+
 let bannerString = `<pre class="customFont">
                                                                             
 ██████╗ ███████╗██╗██╗  ██╗ ██████╗  ██████╗ ██╗    ██╗███████╗██████╗      
@@ -126,3 +137,5 @@ let bannerString = `<pre class="customFont">
 ╚═╝     ╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝  ╚══╝╚══╝ ╚══════╝╚═════╝  v1.0
 For a list of available commands, type "help".                              
                                                                             </pre>`;
+
+let commandNotFoundString = "The given command doesn't exist, to see list of available commands, type \"help\".";
