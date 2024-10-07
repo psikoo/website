@@ -1,0 +1,9 @@
+{
+    "name": "NAME",
+    "bornTime": "TIME",
+    "stats": {
+        "happiness": "5",
+        "hunger": "5",
+        "energy:": "5"
+    }
+}
