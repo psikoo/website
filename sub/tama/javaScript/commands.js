@@ -1,5 +1,3 @@
-import fs from "fs";
-
 export async function processCommand(command) {
     command = command.split(" ");
     //Utils
@@ -7,10 +5,10 @@ export async function processCommand(command) {
         addToOld(command[0], helpString);} 
     else if(command[0] == "tamagotchi") {
         clearOld();
-        addToOld(command[0], calculateTamagotchiString());}
+        addToOld(command[0], await calculateTamagotchiString());}
     else if(command[0] == "reload" || command[0] == "r") {
         clearOld();
-        addToOld(command[0], calculateTamagotchiString());}
+        addToOld(command[0], await calculateTamagotchiString());}
     //Github
     else if(command[0] == "repo") {
         clearOld();
@@ -33,17 +31,34 @@ function clearOld() {
     document.getElementById("old").innerHTML = "";
 }
 
-function calculateTamagotchiString() {
-    let calculatedString = tamagotchiString + getTamagotchi();
+async function calculateTamagotchiString() {
+    let calculatedString = tamagotchiString + await getTamagotchi();
     return calculatedString
 }
 
-function getTamagotchi() {
+async function getURL(url) {
+    let headersList = {
+        "Accept": "*/*",
+    }
+       
+    let response = await fetch(url, { 
+        method: "GET",
+        headers: headersList
+    });
+       
+    let data = await response.text();
+    return data;
+}
+
+async function getTamagotchi() {
+    //let data = JSON.parse(await getURL("http://quenecesitas.net:3001/getTamagotchi"));
+    let data = JSON.parse('{"name":"woamp","bornTime":"TIME","stats":{"happiness":"5","hunger":"3","energy":"5"}}');
+
     let tamagotchi = `<pre class="customFont">
 ┌──────────────────────────────────────────────────────────────────────────────────────┐
 
-    Name: NAMESTRING Age: AGESTRING
-    Happiness: HAPPINESSTRING Hunger: HUNGERSTRING Energy: ENERGYSTRING
+    Name: ${data.name} Age: ${data.bornTime}
+    Happiness: ${data.stats.happiness} Hunger: ${data.stats.hunger} Energy: ${data.stats.energy}
     ${new Date().valueOf()}
 
 └──────────────────────────────────────────────────────────────────────────────────────┘
