@@ -4,6 +4,7 @@ export async function processCommand(command) {
     if(command[0] == "help") {
         addToOld(command[0], helpString);} 
     else if(command[0] == "tamagotchi") {
+        clearOld();
         addToOld(command[0], tamagotchiString);}
     //Github
     else if(command[0] == "repo") {
@@ -23,20 +24,6 @@ function addToOld(command , content) {
 
 function clearOld() {
     document.getElementById("old").innerHTML = "";
-}
-
-async function getURL(url) {
-    let headersList = {
-        "Accept": "*/*",
-    }
-       
-    let response = await fetch(url, { 
-         method: "GET",
-        headers: headersList
-    });
-       
-    let data = await response.text();
-    return data;
 }
 
 let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">&gtgithub.com/psikoo/website</a>"
