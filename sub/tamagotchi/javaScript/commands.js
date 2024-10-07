@@ -1,7 +1,20 @@
 export async function processCommand(command) {
     command = command.split(" ");
+    //Game
+    if(command[0] == "play" || command[0] == "p") {
+        await getURL("http://quenecesitas.net:3001/play");
+        clearOld();
+        addToOld(command[0], await calculateTamagotchiString());}
+    else if(command[0] == "feed" || command[0] == "f") {
+        await getURL("http://quenecesitas.net:3001/feed");
+        clearOld();
+        addToOld(command[0], await calculateTamagotchiString());}
+    else if(command[0] == "rest" || command[0] == "s") {
+        await getURL("http://quenecesitas.net:3001/rest");
+        clearOld();
+        addToOld(command[0], await calculateTamagotchiString());}
     //Utils
-    if(command[0] == "help") {
+    else if(command[0] == "help") {
         addToOld(command[0], helpString);} 
     else if(command[0] == "tamagotchi" || command[0] == "reload" || command[0] == "r") {
         await postURL("http://quenecesitas.net:3001/reload", {"lastUpdate":`${new Date().valueOf()}`});
@@ -68,19 +81,40 @@ async function postURL(url, body) {
     return data;
 }
 
+function stateToEmoji(state) {
+    let string = "";
+    if(state == "Dead") {
+        string += "☠️ Dead"
+    } else {
+        string += "💖 Alive"
+    }
+    return string;
+}
+function numToBar(num) {
+    let bar = "";
+    bar += "█".repeat(num);
+    bar += "░".repeat(10-num);
+    bar += " ("+num+")";
+    return bar;
+}
+
 async function getTamagotchi() {
     let data = JSON.parse(await getURL("http://quenecesitas.net:3001/getTamagotchi"));
+    let age;
     if(data.state == "Dead") {
-        let age = (((new Date().valueOf()-data.deadTime)/1000)/3600).toFixed(2)
+        age = (((data.deadTime-data.bornTime)/1000)/3600).toFixed(2);
     } else {
-        let age = (((new Date().valueOf()-data.bornTime)/1000)/3600).toFixed(2)
+        age = (((new Date().valueOf()-data.bornTime)/1000)/3600).toFixed(2);
     }
 
     let tamagotchi = `<pre class="customFont">
 ┌──────────────────────────────────────────────────────────────────────────────────────┐
 
-    Name: ${data.name} State: ${data.state} Age: ${(((new Date().valueOf()-data.bornTime)/1000)/3600).toFixed(2)} hours
-    Happiness: ${data.happiness} Hunger: ${data.hunger} Energy: ${data.energy}
+    ┌───[ 👾 ${data.name} ]───[ 📅 ${age} hours ]───[ ${stateToEmoji(data.state)} ]───┐    
+
+        😄:${numToBar(data.happiness)} 
+        🍗:${numToBar(data.hunger)} 
+        💤:${numToBar(data.energy)}
 
 └──────────────────────────────────────────────────────────────────────────────────────┘
 
@@ -92,10 +126,14 @@ let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\
 
 let helpString = `<pre class="customFont">
 ⚠ This project is a WIP (things may not work) 
+> Game commands
+    > play
+    > feed
+    > rest
+    > reload
 > Utility commands
     > help
     > tamagotchi
-    > reload
 > Github
     > repo
 </pre>`;
@@ -108,7 +146,7 @@ let tamagotchiString = `<pre class="customFont">
    ██║   ██╔══██║██║╚██╔╝██║██╔══██║██║   ██║██║   ██║   ██║   ██║     ██╔══██║██║     
    ██║   ██║  ██║██║ ╚═╝ ██║██║  ██║╚██████╔╝╚██████╔╝   ██║   ╚██████╗██║  ██║██║     
    ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝    ╚═════╝╚═╝  ╚═╝╚═╝ v1.0
-Welcome to a community online tamagotchi clone. Try using "help" for a list of commands
+Welcome to a multiplayer version of tamagotchi. Try using "help" for a list of commands
                                                                             </pre>`;
 
 let commandNotFoundString = "The given command doesn't exist.";
