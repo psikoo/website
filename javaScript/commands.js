@@ -18,8 +18,7 @@ export async function processCommand(command) {
     else if(command[0] == "cat") {
         addToOld(command[0], catString);}
     else if(command[0] == "tama") {
-        console.log(window.location.href)
-        addToOld(command[0], catString);}
+        addToOld(command[0], tamaString);}
     //Info
     else if(command[0] == "hostname") {
         addToOld(command[0], hostString);} 
@@ -82,11 +81,10 @@ async function getURL(url) {
 
 let hostString = "github.io";
 let whoamiString = "psikoo";
-let tamaGithubString = "<a href=\"/sub/tama/tama.html\" target=\"_blank\">&gtwebsite/sub/tama</a>"
-let tamaNginXString = "<a href=\"/sub/tama/tama.html\" target=\"_blank\">&gtwebsite/sub/tama</a>"
-let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">&gtgithub.com/psikoo/website</a>"
-let aboutString = "This project was made with pure HTML, CSS and JS. To see how it was made use the command \"repo\". To see other projects of mine use the command \"projects\", or use the \"aboutMe\" command for more information on me."
-let aboutMeString = "<a href=\"/sub/aboutMe/aboutMe.html\" target=\"_blank\">&gtwebsite/sub/aboutMe</a>"
+let tamaString = `<a href=\"${window.location.href}sub/tama/tama.html\" target=\"_blank\">&gtwebsite/sub/tama</a>`;
+let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">&gtgithub.com/psikoo/website</a>";
+let aboutString = "This project was made with pure HTML, CSS and JS. To see how it was made use the command \"repo\". To see other projects of mine use the command \"projects\", or use the \"aboutMe\" command for more information on me.";
+let aboutMeString = `<a href=\"${window.location.href}sub/aboutMe/aboutMe.html\" target=\"_blank\">&gtwebsite/sub/aboutMe</a>`;
 
 let pagesString= `<pre class="customFont">
 > github.io
