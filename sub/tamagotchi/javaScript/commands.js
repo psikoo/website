@@ -3,16 +3,19 @@ export async function processCommand(command) {
     //Utils
     if(command[0] == "help") {
         addToOld(command[0], helpString);} 
-    else if(command[0] == "tamagotchi") {
-        clearOld();
-        addToOld(command[0], await calculateTamagotchiString());}
-    else if(command[0] == "reload" || command[0] == "r") {
+    else if(command[0] == "tamagotchi" || command[0] == "reload" || command[0] == "r") {
+        await postURL("http://quenecesitas.net:3001/reload", {"lastUpdate":`${new Date().valueOf()}`});
         clearOld();
         addToOld(command[0], await calculateTamagotchiString());}
     //Github
     else if(command[0] == "repo") {
         clearOld();
         addToOld(command[0], repoString);}
+    //Admin
+    else if(command[0] == "admin" && command[1] == "new") {
+        await postURL("http://quenecesitas.net:3001/postTamagotchi", {"name":`${command[2]}`,"bornTime":`${new Date().valueOf()}`,"happiness":"10","hunger":"10","energy":"10","lastUpdate":`${new Date().valueOf()}`});
+        clearOld();
+        addToOld("tamagotchi", await calculateTamagotchiString());}
     //Unknown
     else {
         clearOld();
@@ -40,7 +43,6 @@ async function getURL(url) {
     let headersList = {
         "Accept": "*/*",
     }
-       
     let response = await fetch(url, { 
         method: "GET",
         headers: headersList
@@ -50,15 +52,30 @@ async function getURL(url) {
     return data;
 }
 
+async function postURL(url, body) {
+    let headersList = {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+    }
+    let bodyContent = JSON.stringify(body);
+    let response = await fetch(url, { 
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+    });
+       
+    let data = await response.text();
+    return data;
+}
+
 async function getTamagotchi() {
-    //let data = JSON.parse(await getURL("http://quenecesitas.net:3001/getTamagotchi"));
-    let data = JSON.parse('{"name":"woamp","bornTime":"TIME","stats":{"happiness":"5","hunger":"3","energy":"5"}}');
+    let data = JSON.parse(await getURL("http://quenecesitas.net:3001/getTamagotchi"));
 
     let tamagotchi = `<pre class="customFont">
 ┌──────────────────────────────────────────────────────────────────────────────────────┐
 
-    Name: ${data.name} Age: ${data.bornTime}
-    Happiness: ${data.stats.happiness} Hunger: ${data.stats.hunger} Energy: ${data.stats.energy}
+    Name: ${data.name} Age: ${new Date().valueOf()-data.bornTime}
+    Happiness: ${data.happiness} Hunger: ${data.hunger} Energy: ${data.energy}
     ${new Date().valueOf()}
 
 └──────────────────────────────────────────────────────────────────────────────────────┘
