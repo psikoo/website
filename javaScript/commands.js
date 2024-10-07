@@ -17,8 +17,8 @@ export async function processCommand(command) {
         addToOld(echoCommandString, echoString);} 
     else if(command[0] == "cat") {
         addToOld(command[0], catString);}
-    else if(command[0] == "tama") {
-        addToOld(command[0], tamaString);}
+    else if(command[0] == "tamagotchi" || command[0] == "tama") {
+        addToOld(command[0], tamagotchiString);}
     //Info
     else if(command[0] == "hostname") {
         addToOld(command[0], hostString);} 
@@ -81,7 +81,7 @@ async function getURL(url) {
 
 let hostString = "github.io";
 let whoamiString = "psikoo";
-let tamaString = `<a href=\"${window.location.href}sub/tama/tama.html\" target=\"_blank\">&gtwebsite/sub/tama</a>`;
+let tamagotchiString = `<a href=\"${window.location.href}sub/tamagotchi/tamagotchi.html\" target=\"_blank\">&gtwebsite/sub/tamagotchi</a>`;
 let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">&gtgithub.com/psikoo/website</a>";
 let aboutString = "This project was made with pure HTML, CSS and JS. To see how it was made use the command \"repo\". To see other projects of mine use the command \"projects\", or use the \"aboutMe\" command for more information on me.";
 let aboutMeString = `<a href=\"${window.location.href}sub/aboutMe/aboutMe.html\" target=\"_blank\">&gtwebsite/sub/aboutMe</a>`;
@@ -89,8 +89,8 @@ let aboutMeString = `<a href=\"${window.location.href}sub/aboutMe/aboutMe.html\"
 let pagesString= `<pre class="customFont">
 > github.io
     > <a href=\"https://psikoo.github.io/website/\" target=\"_blank\">/website</a>
-    > <a href=\"https://psikoo.github.io/website/sub/aboutMe.html\" target=\"_blank\">/website/sub/aboutMe</a>
-    > <a href=\"https://psikoo.github.io/website/sub/tama.html\" target=\"_blank\">/website/sub/tama</a>
+    > <a href=\"https://psikoo.github.io/website/sub/aboutMe/aboutMe.html\" target=\"_blank\">/website/sub/aboutMe</a>
+    > <a href=\"https://psikoo.github.io/website/sub/tamagotchi/tamagotchi.html\" target=\"_blank\">/website/sub/tamagotchi</a>
     > <a href=\"https://psikoo.github.io/LeagueClientStats/\" target=\"_blank\">/LeagueClientStats</a>
 > self-hosted
     > <a href=\"https://quenecesitas.net\" target=\"_blank\">quenecesitas.net (mirror of github site)</a>
@@ -103,7 +103,7 @@ let helpString = `<pre class="customFont">
     > banner
     > echo
     > cat
-    > tama
+    > tamagotchi
 > Github
     > repo
     > about
