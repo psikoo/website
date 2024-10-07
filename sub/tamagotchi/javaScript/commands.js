@@ -13,7 +13,7 @@ export async function processCommand(command) {
         addToOld(command[0], repoString);}
     //Admin
     else if(command[0] == "admin" && command[1] == "new") {
-        await postURL("http://quenecesitas.net:3001/postTamagotchi", {"name":`${command[2]}`,"bornTime":`${new Date().valueOf()}`,"happiness":"10","hunger":"10","energy":"10","lastUpdate":`${new Date().valueOf()}`});
+        await postURL("http://quenecesitas.net:3001/postTamagotchi", {"name":`${command[2]}`,"state":"Alive","bornTime":`${new Date().valueOf()}`,"deadTime":"time","happiness":"10","hunger":"10","energy":"10","lastUpdate":`${new Date().valueOf()}`});
         clearOld();
         addToOld("tamagotchi", await calculateTamagotchiString());}
     //Unknown
@@ -70,13 +70,17 @@ async function postURL(url, body) {
 
 async function getTamagotchi() {
     let data = JSON.parse(await getURL("http://quenecesitas.net:3001/getTamagotchi"));
+    if(data.state == "Dead") {
+        let age = (((new Date().valueOf()-data.deadTime)/1000)/3600).toFixed(2)
+    } else {
+        let age = (((new Date().valueOf()-data.bornTime)/1000)/3600).toFixed(2)
+    }
 
     let tamagotchi = `<pre class="customFont">
 ┌──────────────────────────────────────────────────────────────────────────────────────┐
 
-    Name: ${data.name} Age: ${new Date().valueOf()-data.bornTime}
+    Name: ${data.name} State: ${data.state} Age: ${(((new Date().valueOf()-data.bornTime)/1000)/3600).toFixed(2)} hours
     Happiness: ${data.happiness} Hunger: ${data.hunger} Energy: ${data.energy}
-    ${new Date().valueOf()}
 
 └──────────────────────────────────────────────────────────────────────────────────────┘
 
