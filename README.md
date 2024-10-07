@@ -1,7 +1,7 @@
 
 # psikooWeb
 
-psikooWeb is an static website made with pure HTML, CSS and JS. It is hosted using the github pages system, [psikoo.github.io/website](https://psikoo.github.io/website/). psikooWeb is ment to resemble Arch linux´s base terminal mixed with Windows10´s default terminal theme, this is because I personally love the look of "psikoo[]()@github.io:~$ " from the Arch terminal and the fully black and white theme of Windows terminal.
+psikooWeb is an static website made with pure HTML, CSS and JS. It is hosted using the github pages system, [psikoo.github.io/website](https://psikoo.github.io/website/). psikooWeb is meant to resemble Arch linux´s base terminal mixed with Windows10´s default terminal theme, this is because I personally love the look of "psikoo[]()@github.io:~$ " from the Arch terminal and the fully black and white theme of Windows terminal.
 
 This project was heavily inspired by a similar website [term.m4tt72.com](https://term.m4tt72.com/).
 
