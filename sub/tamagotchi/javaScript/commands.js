@@ -2,24 +2,24 @@ export async function processCommand(command) {
     command = command.split(" ");
     //Game
     if(command[0] == "play" || command[0] == "p") {
-        await getURL("http://quenecesitas.net:3001/play");
+        let res = await getURL("http://quenecesitas.net:3001/play");
         clearOld();
-        addToOld(command[0], await calculateTamagotchiString());}
+        addToOld(command[0], await calculateTamagotchiString(res));}
     else if(command[0] == "feed" || command[0] == "f") {
-        await getURL("http://quenecesitas.net:3001/feed");
+        let res = await getURL("http://quenecesitas.net:3001/feed");
         clearOld();
-        addToOld(command[0], await calculateTamagotchiString());}
+        addToOld(command[0], await calculateTamagotchiString(res));}
     else if(command[0] == "rest" || command[0] == "s") {
-        await getURL("http://quenecesitas.net:3001/rest");
+        let res = await getURL("http://quenecesitas.net:3001/rest");
         clearOld();
-        addToOld(command[0], await calculateTamagotchiString());}
+        addToOld(command[0], await calculateTamagotchiString(res));}
     //Utils
     else if(command[0] == "help") {
         addToOld(command[0], helpString);} 
     else if(command[0] == "tamagotchi" || command[0] == "reload" || command[0] == "r") {
         await postURL("http://quenecesitas.net:3001/reload", {"lastUpdate":`${new Date().valueOf()}`});
         clearOld();
-        addToOld(command[0], await calculateTamagotchiString());}
+        addToOld(command[0], await calculateTamagotchiString("Reloaded Tamagotchi"));}
     //Github
     else if(command[0] == "repo") {
         clearOld();
@@ -47,8 +47,8 @@ function clearOld() {
     document.getElementById("old").innerHTML = "";
 }
 
-async function calculateTamagotchiString() {
-    let calculatedString = tamagotchiString + await getTamagotchi();
+async function calculateTamagotchiString(res) {
+    let calculatedString = tamagotchiString + await getTamagotchi(res);
     return calculatedString
 }
 
@@ -98,13 +98,18 @@ function numToBar(num) {
     return bar;
 }
 
-async function getTamagotchi() {
+async function getTamagotchi(res) {
     let data = JSON.parse(await getURL("http://quenecesitas.net:3001/getTamagotchi"));
     let age;
+    let info = "";
     if(data.state == "Dead") {
         age = (((data.deadTime-data.bornTime)/1000)/3600).toFixed(2);
     } else {
         age = (((new Date().valueOf()-data.bornTime)/1000)/3600).toFixed(2);
+    }
+
+    if(res != undefined) {
+        info = res;
     }
 
     let tamagotchi = `<pre class="customFont">
@@ -116,6 +121,9 @@ async function getTamagotchi() {
         🍗:${numToBar(data.hunger)} 
         💤:${numToBar(data.energy)}
 
+        ${info}
+        
+
 └──────────────────────────────────────────────────────────────────────────────────────┘
 
 </pre>`;
@@ -125,7 +133,7 @@ async function getTamagotchi() {
 let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">&gtgithub.com/psikoo/website</a>"
 
 let helpString = `<pre class="customFont">
-⚠ This project is a WIP (things may not work) 
+⚠ WIP
 > Game commands
     > play
     > feed
