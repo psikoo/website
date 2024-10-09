@@ -25,7 +25,7 @@ export async function processCommand(command) {
         clearOld();
         addToOld(command[0], repoString);}
     //Admin
-    else if(command[0] == "admin" && command[1] == "new") {
+    else if(command[0] == "add" && command[1] == "new") {
         await postURL("http://quenecesitas.net:3001/postTamagotchi", {"name":`${command[2]}`,"state":"Alive","bornTime":`${new Date().valueOf()}`,"deadTime":"time","happiness":"10","hunger":"10","energy":"10","lastUpdate":`${new Date().valueOf()}`});
         clearOld();
         addToOld("tamagotchi", await calculateTamagotchiString());}
@@ -133,7 +133,6 @@ async function getTamagotchi(res) {
 let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">&gtgithub.com/psikoo/website</a>"
 
 let helpString = `<pre class="customFont">
-⚠ WIP
 > Game commands
     > play
     > feed
@@ -142,6 +141,7 @@ let helpString = `<pre class="customFont">
 > Utility commands
     > help
     > tamagotchi
+    > add new <name>
 > Github
     > repo
 </pre>`;
