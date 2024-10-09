@@ -27,3 +27,19 @@ The website works like any other terminal. The command "help" prints out a list 
     - hostname      | Prints the hostname
     - whoami        | Prints the username
     - date          | Prints the current date and time
+
+## Hosting your own
+
+**Important:**
+
+- Create a file called "token" on the base the directory of the project and add the following contents to it:
+``` env
+YOURGITHUBTOKEN
+```
+- YOURGITHUBTOKEN should a github api token with read:user permissions, you can get your token [here](https://github.com/settings/tokens/new).
+
+- You also need to install the needed dependencies by running the following command:
+
+```bash
+npm install
+```

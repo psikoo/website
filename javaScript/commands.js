@@ -65,12 +65,18 @@ function clearOld() {
 }
 
 async function getURL(url) {
+    let apiToken = "";
+    await fetch("token").then((res) => res.text()).then((text) => {
+        apiToken = text;
+    }).catch((e) => console.error(e));
+
     let headersList = {
         "Accept": "*/*",
+        "Authorization": "token "+apiToken
     }
        
     let response = await fetch(url, { 
-         method: "GET",
+        method: "GET",
         headers: headersList
     });
        
