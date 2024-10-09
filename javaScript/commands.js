@@ -46,8 +46,7 @@ export async function processCommand(command) {
         addToOld(command[0], aboutMeString);}
     //Other
     else if(command[0] == "admin") {
-        window.location.href = window.location.protocol + '//' + window.location.hostname + ':9090';
-    }
+        window.location.href = window.location.protocol + '//' + window.location.hostname + ':9090'; }
     //Unknown
     else {
         addToOld(command[0], commandNotFoundString);}

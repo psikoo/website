@@ -17,6 +17,7 @@ The website works like any other terminal. The command "help" prints out a list 
     - banner        | Prints the terminal banner
     - echo          | Prints the arguments following the command
     - cat           | Meow :3
+    - tamagotchi    | Multiplayer tamagotchi
 - Github
     - repo          | Link to the websites repository
     - about         | Prints short about message
