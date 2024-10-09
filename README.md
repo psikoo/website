@@ -29,4 +29,5 @@ The website works like any other terminal. The command "help" prints out a list 
 
 
 ⚠ If [quenecesitas.net](https://quenecesitas.net) isn't working for you, you may need to allow mix content loading (the tamagotchi API doesn't use https rn)
+
 ![img](https://github.com/psikoo/LeagueClientStats/blob/main/assets/mixedContent.png)
