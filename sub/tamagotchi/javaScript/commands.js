@@ -17,7 +17,7 @@ export async function processCommand(command) {
     else if(command[0] == "help") {
         addToOld(command[0], helpString);} 
     else if(command[0] == "main") {
-        window.location.href = window.location.protocol + '//' + window.location.hostname; }
+        window.location.href = window.location.protocol + "//" + window.location.hostname; }
     else if(command[0] == "tamagotchi" || command[0] == "reload" || command[0] == "r") {
         await postURL("https://quenecesitas.net:3001/reload", {"lastUpdate":`${new Date().valueOf()}`});
         clearOld();

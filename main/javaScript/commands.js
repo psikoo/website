@@ -18,7 +18,7 @@ export async function processCommand(command) {
     else if(command[0] == "cat") {
         addToOld(command[0], catString);}
     else if(command[0] == "tamagotchi" || command[0] == "tama") {
-        addToOld(command[0], tamagotchiString);}
+        window.location.href = window.location.protocol + "//" + window.location.hostname + "/sub/tamagotchi"; }
     //Info
     else if(command[0] == "hostname") {
         addToOld(command[0], hostString);} 
@@ -46,7 +46,7 @@ export async function processCommand(command) {
         addToOld(command[0], aboutMeString);}
     //Other
     else if(command[0] == "admin") {
-        window.location.href = window.location.protocol + '//' + window.location.hostname + ':9090'; }
+        window.location.href = window.location.protocol + "//" + window.location.hostname + ":9090"; }
     //Unknown
     else {
         addToOld(command[0], commandNotFoundString);}
