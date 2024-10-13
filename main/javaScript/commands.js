@@ -18,9 +18,9 @@ export async function processCommand(command) {
     else if(command[0] == "cat") {
         addToOld(command[0], catString);}
     else if(command[0] == "tamagotchi" || command[0] == "tama") {
-        window.location.href = window.location.protocol + "//" + window.location.hostname + "/sub/tamagotchi"; }
+        window.location.href = window.location.protocol + "//" + window.location + "sub/tamagotchi/"; }
     else if(command[0] == "morse") {
-        window.location.href = window.location.protocol + "//" + window.location.hostname + "/sub/morse"; }
+        window.location.href = window.location.protocol + "//" + window.location + "sub/morse/"; }
     //Info
     else if(command[0] == "hostname") {
         addToOld(command[0], hostString);} 
