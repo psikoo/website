@@ -19,6 +19,8 @@ export async function processCommand(command) {
         addToOld(command[0], catString);}
     else if(command[0] == "tamagotchi" || command[0] == "tama") {
         window.location.href = window.location.protocol + "//" + window.location.hostname + "/sub/tamagotchi"; }
+    else if(command[0] == "morse") {
+        window.location.href = window.location.protocol + "//" + window.location.hostname + "/sub/morse"; }
     //Info
     else if(command[0] == "hostname") {
         addToOld(command[0], hostString);} 
