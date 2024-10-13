@@ -49,7 +49,7 @@ let bannerString = `<pre class="customFont">
 ██║╚██╔╝██║██║   ██║██╔══██╗╚════██║██╔══╝       
 ██║ ╚═╝ ██║╚██████╔╝██║  ██║███████║███████╗     
 ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝ v1.0
-Welcome to a simple morse interpreter.
+Welcome to a simple morse interpreter. Try using "help" for a list of commands
 > quick press z = .
 > long press z = -
 > x = new letter
