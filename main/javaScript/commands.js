@@ -86,7 +86,6 @@ async function getURL(url) {
 
 let hostString = "github.io";
 let whoamiString = "psikoo";
-let tamagotchiString = `<a href=\"${window.location.href}sub/tamagotchi/tamagotchi.html\" target=\"_blank\">&gtwebsite/sub/tamagotchi</a>`;
 let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">&gtgithub.com/psikoo/website</a>";
 let aboutString = "This project was made with pure HTML, CSS and JS. To see how it was made use the command \"repo\". To see other projects of mine use the command \"projects\", or use the \"aboutMe\" command for more information on me.";
 let aboutMeString = `<a href=\"${window.location.href}sub/aboutMe/aboutMe.html\" target=\"_blank\">&gtwebsite/sub/aboutMe</a>`;
@@ -94,8 +93,9 @@ let aboutMeString = `<a href=\"${window.location.href}sub/aboutMe/aboutMe.html\"
 let pagesString= `<pre class="customFont">
 > github.io
     > <a href=\"https://psikoo.github.io/website/\" target=\"_blank\">/website</a>
-    > <a href=\"https://psikoo.github.io/website/sub/aboutMe/aboutMe.html\" target=\"_blank\">/website/sub/aboutMe</a>
-    > <a href=\"https://psikoo.github.io/website/sub/tamagotchi/tamagotchi.html\" target=\"_blank\">/website/sub/tamagotchi</a>
+    > <a href=\"https://psikoo.github.io/website/sub/aboutMe/index.html\" target=\"_blank\">/website/sub/aboutMe</a>
+    > <a href=\"https://psikoo.github.io/website/sub/tamagotchi/index.html\" target=\"_blank\">/website/sub/tamagotchi</a>
+    > <a href=\"https://psikoo.github.io/website/sub/morse/index.html\" target=\"_blank\">/website/sub/tamagotchi</a>
     > <a href=\"https://psikoo.github.io/LeagueClientStats/\" target=\"_blank\">/LeagueClientStats</a>
 > self-hosted
     > <a href=\"https://quenecesitas.net\" target=\"_blank\">quenecesitas.net (mirror of github site)</a>
@@ -109,6 +109,7 @@ let helpString = `<pre class="customFont">
     > echo
     > cat
     > tamagotchi
+    > morse
 > Github
     > repo
     > about
