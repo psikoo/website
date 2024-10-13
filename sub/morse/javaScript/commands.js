@@ -4,7 +4,9 @@ export async function processCommand(command) {
     if(command[0] == "help") {
         addToOld(command[0], helpString);} 
     else if(command[0] == "main") {
-        window.location.href = window.location.protocol + "//" + window.location.hostname; }
+        let pages = "";
+        if(window.location.hostname == "psikoo.github.io") { pages = "/website/"; }
+        window.location.href = window.location.protocol + "//" + window.location.hostname + pages; }
     else if(command[0] == "banner") {
         clearOld();
         addToOld(command[0], bannerString);}
