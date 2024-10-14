@@ -99,7 +99,7 @@ let pagesString= `<pre class="customFont">
     > <a href=\"https://psikoo.github.io/website/\" target=\"_blank\">/website</a>
     > <a href=\"https://psikoo.github.io/website/sub/aboutMe/index.html\" target=\"_blank\">/website/sub/aboutMe</a>
     > <a href=\"https://psikoo.github.io/website/sub/tamagotchi/index.html\" target=\"_blank\">/website/sub/tamagotchi</a>
-    > <a href=\"https://psikoo.github.io/website/sub/morse/index.html\" target=\"_blank\">/website/sub/tamagotchi</a>
+    > <a href=\"https://psikoo.github.io/website/sub/morse/index.html\" target=\"_blank\">/website/sub/morse</a>
     > <a href=\"https://psikoo.github.io/LeagueClientStats/\" target=\"_blank\">/LeagueClientStats</a>
 > self-hosted
     > <a href=\"https://quenecesitas.net\" target=\"_blank\">quenecesitas.net (mirror of github site)</a>
