@@ -48,7 +48,9 @@ export async function processCommand(command) {
         addToOld(command[0], aboutMeString);}
     //Other
     else if(command[0] == "admin") {
-        window.location.href = window.location.protocol + "//" + window.location.hostname + ":9090"; }
+        window.location.href = "https://quenecesitas.net:9090/"; }
+    else if(command[0] == "pi") {
+        window.location.href = "http://quenecesitas.net:81/admin/"; }
     //Unknown
     else {
         addToOld(command[0], commandNotFoundString);}
