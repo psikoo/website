@@ -145,7 +145,6 @@ let helpString = `<pre class="customFont">
 > Utility commands
     > help
     > main
-    > tamagotchi
     > add new &ltname&gt
 > Github
     > repo

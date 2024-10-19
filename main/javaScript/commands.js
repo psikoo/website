@@ -21,19 +21,9 @@ export async function processCommand(command) {
         window.location.href = window.location + "sub/tamagotchi/"; }
     else if(command[0] == "morse") {
         window.location.href = window.location + "sub/morse/"; }
-    //Info
-    else if(command[0] == "hostname") {
-        addToOld(command[0], hostString);} 
-    else if(command[0] == "whoami") {
-        addToOld(command[0], whoamiString);} 
-    else if(command[0] == "date") {
-        const date = new Date();
-        addToOld(command[0], date);} 
     //Github
-    else if(command[0] == "repo") {
+    else if(command[0] == "repo" || command[0] == "about") {
         addToOld(command[0], repoString);}
-    else if(command[0] == "about") {
-        addToOld(command[0], aboutString);}
     else if(command[0] == "projects" || command[0] == "repos") {
         let projectsString = "";
         let data = JSON.parse(await getURL("https://api.github.com/users/psikoo/repos"));
@@ -52,8 +42,7 @@ export async function processCommand(command) {
     else if(command[0] == "pi") {
         window.location.href = "http://quenecesitas.net:81/admin/"; }
     //Unknown
-    else {
-        addToOld(command[0], commandNotFoundString);}
+    else { addToOld(command[0], commandNotFoundString);}
 }
 
 function addToOld(command , content) {
@@ -88,10 +77,7 @@ async function getURL(url) {
     return data;
 }
 
-let hostString = "github.io";
-let whoamiString = "psikoo";
-let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">&gtgithub.com/psikoo/website</a>";
-let aboutString = "This project was made with pure HTML, CSS and JS. To see how it was made use the command \"repo\". To see other projects of mine use the command \"projects\", or use the \"aboutMe\" command for more information on me.";
+let repoString = "<a href=\"https://github.com/psikoo/website\" target=\"_blank\">&gtgithub.com/psikoo/website</a>\nThis project was made with pure HTML, CSS and JS. To see how it was made use the command \"repo\". To see other projects of mine use the command \"projects\", or use the \"aboutMe\" command for more information on me.";
 let aboutMeString = `<a href=\"${window.location.href}sub/aboutMe/aboutMe.html\" target=\"_blank\">&gtwebsite/sub/aboutMe</a>`;
 
 let pagesString= `<pre class="customFont">
@@ -115,15 +101,10 @@ let helpString = `<pre class="customFont">
     > tamagotchi
     > morse
 > Github
-    > repo
     > about
     > projects
     > pages
     > aboutMe
-> Info commands
-    > hostname
-    > whoami
-    > date
 </pre>`;
 
 let catString = `<pre class="customFont">
