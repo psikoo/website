@@ -10,9 +10,9 @@ document.addEventListener("keydown", (e) => {
         let command = document.getElementById("terminal").innerHTML.substring(20);
         processCommand(command);
         document.getElementById("terminal").innerHTML = "psikoo@github.io:~$ "
-    } else if(e.key=="Backspace" && text.length > 20) {                                         // Delete last character
+    } else if(e.key=="Backspace") {                                                             // Delete last character
         let text = document.getElementById("terminal").innerHTML;
-        document.getElementById("terminal").innerHTML = text.substring(0, text.length - 1);
+        if(text.length > 20) { document.getElementById("terminal").innerHTML = text.substring(0, text.length - 1); }
     } else if(e.key.length == 1) {                                                              // Print out character
         document.getElementById("terminal").innerHTML += e.key;
     }
